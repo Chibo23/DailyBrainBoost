@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>Daily Brain Boost</title>
+  <style>
+    body {
+  margin: 0;
+  padding: 20px;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+h1 {
+  font-family: 'Orbitron', sans-serif;
+  color: #00f0ff;
+  text-shadow: 0 0 5px #00f0ff;
+  font-size: 22px;
+  text-align: center;
+}
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 30px;
+  margin-top: 30px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2), 0 0 40px rgba(0, 255, 255, 0.3);
+  width: 100%;
+  max-width: 600px;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px) scale(1.02);
+}
+
+    select, button, input {
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+   
+    #feedback {
+      font-weight: bold;
+      margin-top: 15px;
+    }
+    .correct {
+      color: green;
+    }
+    .wrong {
+      color: red;
+    }
+    .Logo-left {
+      width: 100px;
+      height: auto;
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      margin-bottom: 10px;
+ /* 💠 Sci-fi glow and hover */
+      transition: all 0.4s ease-in-out;
+      filter: drop-shadow(0 0 6px #00f0ff);
+}
+
+.Logo-left:hover {
+  transform: scale(1.08);
+  filter: drop-shadow(0 0 10px #00f0ff)
+          drop-shadow(0 0 20px #00f0ff);
+}
+.brain-fact {
+  margin: 20px auto;
+  padding: 10px 20px;
+  width: 90%;
+  max-width: 500px;
+  background: rgba(0, 255, 255, 0.1);
+  border-left: 4px solid #00f0ff;
+  box-shadow: 0 0 8px #00f0ff;
+  font-size: 16px;
+  text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+  .Logo-left {
+    top: 15px;
+    left: 15px;
+    width: 50px;
+  }
+
+ 
+
+  .social-icon {
+    width: 24px;
+  }
+
+  .card, .field-selection {
+    padding: 15px;
+    font-size: 16px;
+  }
+}
+  </style>
+</head>
+<body>
+  
+<img src="Logo.png" alt="Brain boost logo" class="Logo-left">
+  <h1>🧠 Daily Brain Boost</h1>
+  
+
+  <label for="fieldSelect">Choose Your Field:</label>
+  <select id="fieldSelect">
+    <option value="" disabled selected hidden>Choose Field</option>
+    <option value="cs">Computer Science</option>
+    <option value="med">Medicine</option>
+    <option value="biz">Business</option>
+    <option value="general">General Logic</option>
+  </select>
+
+  <div class="card">
+    <h2 id="question">Select a field to get your brain boost!</h2>
+
+    <input type="text" id="userAnswerInput" placeholder="Type your answer here..." disabled />
+    <button id="submitBtn" disabled>Submit</button>
+
+    <p id="feedback"></p>
+    <p id="answer" style="display: none;"></p>
+  </div>
+  <br>
+  <h1>Brain Facts!!!!!</h1>
+  <div id="brainFact" class="brain-Fact"></div>
+  <!-- Social + Email Section -->
+   <div style="position: fixed; bottom: 20px; left: 20px; text-align: left;">
+  <p style="margin: 0 0 8px 0; font-weight: bold;">For inquiries:</p>
+  <p style="margin: 0 0 8px 0;">
+    Email: <a href="mailto:manyamajunior014@gmail.com" style="color: #fff; text-decoration: underline;">
+      manyamajunior014@gmail.com
+    </a>
+  </p>
+  
+  <div style="display: flex; gap: 15px; align-items: center;">
+    <a href="https://instagram.com/ch_ibo.jr" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram" style="width: 30px; height: 30px;">
+    </a>
+
+    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968830.png" alt="Twitter X" style="width: 30px; height: 30px;">
+
+    <a href="https://wa.me/255741514867" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" style="width: 30px; height: 30px;">
+    </a>
+  </div>
+
+
+
+
+
+
+  <script>
+    const questions = {
+      cs: [
+        { question: "What is the output of: let x = 5; let y = x++; console.log(y);", answer: "5" },
+        { question: "In binary, what is 1101 + 101?", answer: "10010" },
+        { question: "What is the Big-O complexity of linear search?", answer: "O(n)" },
+        { question: "Which data structure uses LIFO principle?", answer: "Stack" },
+        { question: "I am used to store data temporarily and disappear when power goes out. What am I?", answer: "RAM" }
+      ],
+      med: [
+        { question: "Which organ produces insulin?", answer: "Pancreas" },
+        { question: "What is the universal blood donor group?", answer: "O Negative" },
+        { question: "I pump, but I am not a machine. I beat, but I make no sound. What am I?", answer: "Heart" },
+        { question: "Which vitamin is produced when skin is exposed to sunlight?", answer: "Vitamin D" }
+      ],
+      biz: [
+        { question: "What’s the formula for profit?", answer: "Profit = Revenue – Costs" },
+        { question: "What does ROI stand for?", answer: "Return on Investment" },
+        { question: "I track money in and money out but never spend a cent. What am I?", answer: "Accountant" },
+        { question: "What is a 'startup'?", answer: "A newly established business" }
+      ],
+      general: [
+        { question: "What comes next? 2, 4, 8, 16, ...", answer: "32" },
+        { question: "I speak without a mouth and hear without ears. What am I?", answer: "An echo" },
+        { question: "A farmer has 17 sheep, all but 9 run away. How many are left?", answer: "9" }
+      ]
+    };
+
+    const fieldSelect = document.getElementById("fieldSelect");
+    const questionEl = document.getElementById("question");
+    const answerEl = document.getElementById("answer");
+    const userAnswerInput = document.getElementById("userAnswerInput");
+    const submitBtn = document.getElementById("submitBtn");
+    const feedbackEl = document.getElementById("feedback");
+
+    let currentAnswer = "";
+
+    function getRandomQuestion(field) {
+      const fieldQuestions = questions[field];
+      const randomIndex = Math.floor(Math.random() * fieldQuestions.length);
+      return fieldQuestions[randomIndex];
+    }
+
+    function loadQuestion() {
+      const selectedField = fieldSelect.value;
+      const qObj = getRandomQuestion(selectedField);
+      questionEl.textContent = qObj.question;
+      currentAnswer = qObj.answer;
+
+      // Reset
+      answerEl.style.display = "none";
+      answerEl.textContent = "";
+      feedbackEl.textContent = "";
+      userAnswerInput.value = "";
+      userAnswerInput.disabled = false;
+      submitBtn.disabled = false;
+      userAnswerInput.focus();
+    }
+
+    function checkAnswer() {
+      const userAnswer = userAnswerInput.value.trim().toLowerCase();
+      const correctAnswer = currentAnswer.trim().toLowerCase();
+
+      if (userAnswer === correctAnswer) {
+        feedbackEl.textContent = "✅ Correct!";
+        feedbackEl.className = "correct";
+      } else {
+        feedbackEl.textContent = "❌ Wrong!";
+        feedbackEl.className = "wrong";
+      }
+
+      answerEl.textContent = "Answer: " + currentAnswer;
+      answerEl.style.display = "block";
+
+      // Lock inputs
+      userAnswerInput.disabled = true;
+      submitBtn.disabled = true;
+    }
+
+    fieldSelect.addEventListener("change", loadQuestion);
+    submitBtn.addEventListener("click", checkAnswer);
+  </script>
+  <script>
+  const brainFacts = [
+    "🧠 Your brain has about 86 billion neurons.",
+    "🧠 The brain uses 20% of your total energy.",
+    "🧠 Information travels up to 268 mph in the brain.",
+    "🧠 Your brain can generate 23 watts of power.",
+    "🧠 Memories are stored across multiple areas.",
+    "🧠 Brain cells can live over 100 years.",
+    "🧠 You can't tickle yourself because your brain predicts the touch."
+  ];
+
+  const randomFact = brainFacts[Math.floor(Math.random() * brainFacts.length)];
+  document.getElementById("brainFact").innerText = randomFact;
+</script>
+
+
+</body>
+</html>
