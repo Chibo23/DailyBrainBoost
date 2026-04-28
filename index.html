@@ -1,64 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="UTF-8" />
+  <meta name="description" content="Daily Brain Boost - Challenge yourself with questions in Computer Science, Medicine, Business, and General Logic">
   <title>Daily Brain Boost</title>
   <style>
     body {
-  margin: 0;
-  padding: 20px;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  color: #fff;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
-}
-h1 {
-  font-family: 'Orbitron', sans-serif;
-  color: #00f0ff;
-  text-shadow: 0 0 5px #00f0ff;
-  font-size: 22px;
-  text-align: center;
-}
-.card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(15px);
-  border-radius: 20px;
-  padding: 30px;
-  margin-top: 30px;
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2), 0 0 40px rgba(0, 255, 255, 0.3);
-  width: 100%;
-  max-width: 600px;
-  transition: transform 0.3s ease;
-}
+      margin: 0;
+      padding: 20px;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
 
-.card:hover {
-  transform: translateY(-5px) scale(1.02);
-}
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      color: #00f0ff;
+      text-shadow: 0 0 5px #00f0ff;
+      font-size: 22px;
+      text-align: center;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(15px);
+      border-radius: 20px;
+      padding: 30px;
+      margin-top: 30px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.2), 0 0 40px rgba(0, 255, 255, 0.3);
+      width: 100%;
+      max-width: 600px;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px) scale(1.02);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
 
     select, button, input {
       padding: 10px;
       font-size: 16px;
-      margin: 10px;
+      margin: 10px 0;
       border-radius: 5px;
       border: 1px solid #ccc;
+      width: 100%;
+      box-sizing: border-box;
     }
-   
+
+    button {
+      cursor: pointer;
+      background-color: #00f0ff;
+      color: #000;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    button:hover:not(:disabled) {
+      background-color: #00c9cc;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    }
+
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
     #feedback {
       font-weight: bold;
       margin-top: 15px;
+      font-size: 18px;
     }
+
     .correct {
-      color: green;
+      color: #00ff00;
     }
+
     .wrong {
-      color: red;
+      color: #ff6b6b;
     }
+
     .Logo-left {
       width: 100px;
       height: auto;
@@ -66,100 +99,146 @@ h1 {
       top: 30px;
       left: 30px;
       margin-bottom: 10px;
- /* 💠 Sci-fi glow and hover */
       transition: all 0.4s ease-in-out;
       filter: drop-shadow(0 0 6px #00f0ff);
-}
+    }
 
-.Logo-left:hover {
-  transform: scale(1.08);
-  filter: drop-shadow(0 0 10px #00f0ff)
-          drop-shadow(0 0 20px #00f0ff);
-}
-.brain-fact {
-  margin: 20px auto;
-  padding: 10px 20px;
-  width: 90%;
-  max-width: 500px;
-  background: rgba(0, 255, 255, 0.1);
-  border-left: 4px solid #00f0ff;
-  box-shadow: 0 0 8px #00f0ff;
-  font-size: 16px;
-  text-align: center;
-}
+    .Logo-left:hover {
+      transform: scale(1.08);
+      filter: drop-shadow(0 0 10px #00f0ff) drop-shadow(0 0 20px #00f0ff);
+    }
 
-@media screen and (max-width: 600px) {
-  .Logo-left {
-    top: 15px;
-    left: 15px;
-    width: 50px;
-  }
+    .brain-fact {
+      margin: 20px auto;
+      padding: 10px 20px;
+      width: 90%;
+      max-width: 500px;
+      background: rgba(0, 255, 255, 0.1);
+      border-left: 4px solid #00f0ff;
+      box-shadow: 0 0 8px #00f0ff;
+      font-size: 16px;
+      text-align: center;
+      animation: fadeIn 0.5s ease-in;
+    }
 
- 
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
 
-  .social-icon {
-    width: 24px;
-  }
+    .social-links {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      text-align: left;
+    }
 
-  .card, .field-selection {
-    padding: 15px;
-    font-size: 16px;
-  }
-}
+    .social-links p {
+      margin: 0 0 8px 0;
+    }
+
+    .social-links a {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .social-icon {
+      width: 30px;
+      height: 30px;
+      transition: transform 0.3s ease;
+    }
+
+    .social-icon:hover {
+      transform: scale(1.1);
+    }
+
+    @media screen and (max-width: 600px) {
+      .Logo-left {
+        top: 15px;
+        left: 15px;
+        width: 50px;
+      }
+
+      .card {
+        padding: 15px;
+        font-size: 16px;
+      }
+
+      .social-links {
+        bottom: 10px;
+        left: 10px;
+        font-size: 14px;
+      }
+
+      .social-icon {
+        width: 24px;
+        height: 24px;
+      }
+    }
   </style>
 </head>
 <body>
-  
-<img src="Logo.png" alt="Brain boost logo" class="Logo-left">
-  <h1>🧠 Daily Brain Boost</h1>
-  
+  <img src="Logo.png" alt="Brain boost logo" class="Logo-left">
+  <main>
+    <h1>🧠 Daily Brain Boost</h1>
 
-  <label for="fieldSelect">Choose Your Field:</label>
-  <select id="fieldSelect">
-    <option value="" disabled selected hidden>Choose Field</option>
-    <option value="cs">Computer Science</option>
-    <option value="med">Medicine</option>
-    <option value="biz">Business</option>
-    <option value="general">General Logic</option>
-  </select>
+    <div class="card">
+      <label for="fieldSelect">Choose Your Field:</label>
+      <select id="fieldSelect" aria-label="Select a field of study">
+        <option value="" disabled selected hidden>Choose Field</option>
+        <option value="cs">Computer Science</option>
+        <option value="med">Medicine</option>
+        <option value="biz">Business</option>
+        <option value="general">General Logic</option>
+      </select>
 
-  <div class="card">
-    <h2 id="question">Select a field to get your brain boost!</h2>
+      <h2 id="question">Select a field to get your brain boost!</h2>
 
-    <input type="text" id="userAnswerInput" placeholder="Type your answer here..." disabled />
-    <button id="submitBtn" disabled>Submit</button>
+      <label for="userAnswerInput">Your Answer:</label>
+      <input type="text" id="userAnswerInput" placeholder="Type your answer here..." disabled aria-label="Enter your answer" />
+      
+      <button id="submitBtn" disabled>Submit</button>
+      <button id="nextBtn" style="display: none;">Next Question</button>
 
-    <p id="feedback"></p>
-    <p id="answer" style="display: none;"></p>
+      <p id="feedback"></p>
+      <p id="answer" style="display: none;"></p>
+    </div>
+
+    <h2>Brain Facts!</h2>
+    <div id="brainFact" class="brain-fact"></div>
+  </main>
+
+  <div class="social-links">
+    <p style="font-weight: bold;">For inquiries:</p>
+    <p>
+      Email: <a href="mailto:manyamajunior014@gmail.com">manyamajunior014@gmail.com</a>
+    </p>
+
+    <div class="social-icons">
+      <a href="https://instagram.com/ch_ibo.jr" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram" class="social-icon">
+      </a>
+
+      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter X">
+        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968830.png" alt="Twitter X" class="social-icon">
+      </a>
+
+      <a href="https://wa.me/255741514867" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" class="social-icon">
+      </a>
+    </div>
   </div>
-  <br>
-  <h1>Brain Facts!!!!!</h1>
-  <div id="brainFact" class="brain-Fact"></div>
-  <!-- Social + Email Section -->
-   <div style="position: fixed; bottom: 20px; left: 20px; text-align: left;">
-  <p style="margin: 0 0 8px 0; font-weight: bold;">For inquiries:</p>
-  <p style="margin: 0 0 8px 0;">
-    Email: <a href="mailto:manyamajunior014@gmail.com" style="color: #fff; text-decoration: underline;">
-      manyamajunior014@gmail.com
-    </a>
-  </p>
-  
-  <div style="display: flex; gap: 15px; align-items: center;">
-    <a href="https://instagram.com/ch_ibo.jr" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram" style="width: 30px; height: 30px;">
-    </a>
-
-    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968830.png" alt="Twitter X" style="width: 30px; height: 30px;">
-
-    <a href="https://wa.me/255741514867" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" style="width: 30px; height: 30px;">
-    </a>
-  </div>
-
-
-
-
-
 
   <script>
     const questions = {
@@ -177,7 +256,7 @@ h1 {
         { question: "Which vitamin is produced when skin is exposed to sunlight?", answer: "Vitamin D" }
       ],
       biz: [
-        { question: "What’s the formula for profit?", answer: "Profit = Revenue – Costs" },
+        { question: "What's the formula for profit?", answer: "Profit = Revenue – Costs" },
         { question: "What does ROI stand for?", answer: "Return on Investment" },
         { question: "I track money in and money out but never spend a cent. What am I?", answer: "Accountant" },
         { question: "What is a 'startup'?", answer: "A newly established business" }
@@ -194,12 +273,29 @@ h1 {
     const answerEl = document.getElementById("answer");
     const userAnswerInput = document.getElementById("userAnswerInput");
     const submitBtn = document.getElementById("submitBtn");
+    const nextBtn = document.getElementById("nextBtn");
     const feedbackEl = document.getElementById("feedback");
+    const brainFactEl = document.getElementById("brainFact");
 
     let currentAnswer = "";
 
+    const brainFacts = [
+      "🧠 Your brain has about 86 billion neurons.",
+      "🧠 The brain uses 20% of your total energy.",
+      "🧠 Information travels up to 268 mph in the brain.",
+      "🧠 Your brain can generate 23 watts of power.",
+      "🧠 Memories are stored across multiple areas.",
+      "🧠 Brain cells can live over 100 years.",
+      "🧠 You can't tickle yourself because your brain predicts the touch."
+    ];
+
+    function getRandomBrainFact() {
+      return brainFacts[Math.floor(Math.random() * brainFacts.length)];
+    }
+
     function getRandomQuestion(field) {
       const fieldQuestions = questions[field];
+      if (!fieldQuestions || fieldQuestions.length === 0) return null;
       const randomIndex = Math.floor(Math.random() * fieldQuestions.length);
       return fieldQuestions[randomIndex];
     }
@@ -207,17 +303,28 @@ h1 {
     function loadQuestion() {
       const selectedField = fieldSelect.value;
       const qObj = getRandomQuestion(selectedField);
+      
+      if (!qObj) {
+        questionEl.textContent = "No questions available for this field.";
+        return;
+      }
+
       questionEl.textContent = qObj.question;
       currentAnswer = qObj.answer;
 
-      // Reset
+      // Reset UI
       answerEl.style.display = "none";
       answerEl.textContent = "";
       feedbackEl.textContent = "";
       userAnswerInput.value = "";
       userAnswerInput.disabled = false;
       submitBtn.disabled = false;
+      submitBtn.style.display = "block";
+      nextBtn.style.display = "none";
       userAnswerInput.focus();
+
+      // Update brain fact
+      brainFactEl.textContent = getRandomBrainFact();
     }
 
     function checkAnswer() {
@@ -235,29 +342,25 @@ h1 {
       answerEl.textContent = "Answer: " + currentAnswer;
       answerEl.style.display = "block";
 
-      // Lock inputs
+      // Show next button instead of submit
       userAnswerInput.disabled = true;
-      submitBtn.disabled = true;
+      submitBtn.style.display = "none";
+      nextBtn.style.display = "block";
     }
 
     fieldSelect.addEventListener("change", loadQuestion);
     submitBtn.addEventListener("click", checkAnswer);
+    nextBtn.addEventListener("click", loadQuestion);
+    
+    // Allow Enter key to submit
+    userAnswerInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter" && !submitBtn.disabled) {
+        checkAnswer();
+      }
+    });
+
+    // Load initial brain fact
+    brainFactEl.textContent = getRandomBrainFact();
   </script>
-  <script>
-  const brainFacts = [
-    "🧠 Your brain has about 86 billion neurons.",
-    "🧠 The brain uses 20% of your total energy.",
-    "🧠 Information travels up to 268 mph in the brain.",
-    "🧠 Your brain can generate 23 watts of power.",
-    "🧠 Memories are stored across multiple areas.",
-    "🧠 Brain cells can live over 100 years.",
-    "🧠 You can't tickle yourself because your brain predicts the touch."
-  ];
-
-  const randomFact = brainFacts[Math.floor(Math.random() * brainFacts.length)];
-  document.getElementById("brainFact").innerText = randomFact;
-</script>
-
-
 </body>
 </html>
