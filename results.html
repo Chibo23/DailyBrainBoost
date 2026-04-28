@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results - Daily Brain Boost</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="results-header">
+            <h1 class="results-title">Quiz Complete! 🎉</h1>
+        </header>
+
+        <!-- Main Content -->
+        <main class="results-main">
+            <div class="results-content">
+                <!-- Final Score Display -->
+                <div class="score-display-large">
+                    <div class="score-circle">
+                        <span class="score-number" id="finalScore">0</span>
+                        <span class="score-divider">/</span>
+                        <span class="score-total" id="totalScore">10</span>
+                    </div>
+                </div>
+
+                <!-- Performance Message -->
+                <div class="performance-message">
+                    <p class="message-text" id="performanceMessage">Great effort!</p>
+                    <p class="percentage-text" id="percentageText">0%</p>
+                </div>
+
+                <!-- Performance Breakdown -->
+                <div class="performance-breakdown">
+                    <div class="breakdown-item">
+                        <div class="breakdown-icon correct">✅</div>
+                        <div class="breakdown-text">
+                            <p class="breakdown-label">Correct Answers</p>
+                            <p class="breakdown-value" id="correctAnswersCount">0</p>
+                        </div>
+                    </div>
+
+                    <div class="breakdown-item">
+                        <div class="breakdown-icon wrong">❌</div>
+                        <div class="breakdown-text">
+                            <p class="breakdown-label">Wrong Answers</p>
+                            <p class="breakdown-value" id="wrongAnswersCount">0</p>
+                        </div>
+                    </div>
+
+                    <div class="breakdown-item">
+                        <div class="breakdown-icon accuracy">📊</div>
+                        <div class="breakdown-text">
+                            <p class="breakdown-label">Accuracy</p>
+                            <p class="breakdown-value" id="accuracyPercentage">0%</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="results-buttons">
+                    <button class="button button-primary" onclick="tryAgain()">
+                        🔄 Try Again
+                    </button>
+                    <button class="button button-secondary" onclick="changeTopic()">
+                        📚 Change Topic
+                    </button>
+                    <button class="button button-tertiary" onclick="goHome()">
+                        🏠 Back to Home
+                    </button>
+                </div>
+
+                <!-- Encouragement Section -->
+                <div class="encouragement-section">
+                    <h3 class="encouragement-title">Keep Practicing! 💪</h3>
+                    <p class="encouragement-text">
+                        The more you practice, the better you'll become. Come back tomorrow for your Daily Brain Boost!
+                    </p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script>
+        // Initialize results page
+        function initResults() {
+            const finalScore = parseInt(sessionStorage.getItem('finalScore')) || 0;
+            const totalScore = parseInt(sessionStorage.getItem('totalScore')) || 10;
+
+            // Calculate percentage and stats
+            const percentage = Math.round((finalScore / totalScore) * 100);
+            const wrongAnswers = totalScore - finalScore;
+
+            // Update display
+            document.getElementById('finalScore').textContent = finalScore;
+            document.getElementById('totalScore').textContent = totalScore;
+            document.getElementById('correctAnswersCount').textContent = finalScore;
+            document.getElementById('wrongAnswersCount').textContent = wrongAnswers;
+            document.getElementById('accuracyPercentage').textContent = percentage + '%';
+            document.getElementById('percentageText').textContent = percentage + '%';
+
+            // Generate performance message
+            const messageElement = document.getElementById('performanceMessage');
+            if (percentage === 100) {
+                messageElement.textContent = 'Perfect Score! 🌟';
+            } else if (percentage >= 80) {
+                messageElement.textContent = 'Excellent Work! 🚀';
+            } else if (percentage >= 60) {
+                messageElement.textContent = 'Good Job! 👏';
+            } else if (percentage >= 40) {
+                messageElement.textContent = 'Nice Effort! 💪';
+            } else {
+                messageElement.textContent = 'Keep Learning! 📚';
+            }
+
+            // Add animation to score circle
+            animateScoreCircle();
+        }
+
+        function animateScoreCircle() {
+            const scoreCircle = document.querySelector('.score-circle');
+            scoreCircle.style.animation = 'scaleIn 0.6s ease-out';
+        }
+
+        function tryAgain() {
+            // Stay on same topic and difficulty
+            window.location.href = 'quiz.html';
+        }
+
+        function changeTopic() {
+            // Clear session storage and go back to topics
+            sessionStorage.removeItem('selectedTopic');
+            sessionStorage.removeItem('selectedTopicName');
+            sessionStorage.removeItem('selectedDifficulty');
+            sessionStorage.removeItem('selectedDifficultyName');
+            window.location.href = 'topics.html';
+        }
+
+        function goHome() {
+            // Clear session storage and go to home
+            sessionStorage.removeItem('selectedTopic');
+            sessionStorage.removeItem('selectedTopicName');
+            sessionStorage.removeItem('selectedDifficulty');
+            sessionStorage.removeItem('selectedDifficultyName');
+            sessionStorage.removeItem('finalScore');
+            sessionStorage.removeItem('totalScore');
+            window.location.href = 'index.html';
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', initResults);
+    </script>
+</body>
+</html>
