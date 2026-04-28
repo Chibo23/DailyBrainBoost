@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Your Challenge - Daily Brain Boost</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="page-header">
+            <div class="header-top">
+                <button class="back-button" onclick="navigateToHome()">
+                    ← Back
+                </button>
+                <h1 class="page-title">Select Your Challenge</h1>
+                <div style="width: 80px;"></div> <!-- Spacer for alignment -->
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="topics-main">
+            <!-- Topics Grid -->
+            <div class="topics-grid">
+                <!-- Computer Science Topic -->
+                <div class="topic-card" onclick="selectTopic('computer-science')">
+                    <div class="topic-icon">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="20" y="20" width="60" height="50" rx="5" fill="none" stroke="currentColor" stroke-width="3"/>
+                            <rect x="30" y="30" width="40" height="30" fill="currentColor"/>
+                            <circle cx="50" cy="70" r="5" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3 class="topic-name">Computer Science</h3>
+                    <p class="topic-description">Test your knowledge of programming, algorithms, and data structures</p>
+                </div>
+
+                <!-- Medicine Topic -->
+                <div class="topic-card" onclick="selectTopic('medicine')">
+                    <div class="topic-icon">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="35" fill="none" stroke="currentColor" stroke-width="3"/>
+                            <rect x="45" y="30" width="10" height="40" fill="currentColor"/>
+                            <rect x="30" y="45" width="40" height="10" fill="currentColor"/>
+                            <circle cx="35" cy="35" r="4" fill="currentColor"/>
+                            <circle cx="65" cy="35" r="4" fill="currentColor"/>
+                            <circle cx="35" cy="65" r="4" fill="currentColor"/>
+                            <circle cx="65" cy="65" r="4" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3 class="topic-name">Medicine</h3>
+                    <p class="topic-description">Explore human anatomy, diseases, and healthcare knowledge</p>
+                </div>
+
+                <!-- Business Topic -->
+                <div class="topic-card" onclick="selectTopic('business')">
+                    <div class="topic-icon">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="25" y="30" width="50" height="50" fill="none" stroke="currentColor" stroke-width="3"/>
+                            <line x1="25" y1="45" x2="75" y2="45" stroke="currentColor" stroke-width="2"/>
+                            <line x1="25" y1="60" x2="75" y2="60" stroke="currentColor" stroke-width="2"/>
+                            <line x1="40" y1="30" x2="40" y2="80" stroke="currentColor" stroke-width="2"/>
+                            <line x1="60" y1="30" x2="60" y2="80" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="topic-name">Business</h3>
+                    <p class="topic-description">Challenge yourself with economics, finance, and management concepts</p>
+                </div>
+
+                <!-- General Logic Topic -->
+                <div class="topic-card" onclick="selectTopic('general-logic')">
+                    <div class="topic-icon">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="50,20 80,40 70,75 30,75 20,40" fill="none" stroke="currentColor" stroke-width="3"/>
+                            <circle cx="50" cy="55" r="8" fill="currentColor"/>
+                            <path d="M 50 40 L 50 47" stroke="currentColor" stroke-width="2"/>
+                            <path d="M 50 63 L 50 70" stroke="currentColor" stroke-width="2"/>
+                            <path d="M 40 55 L 33 55" stroke="currentColor" stroke-width="2"/>
+                            <path d="M 60 55 L 67 55" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="topic-name">General Logic</h3>
+                    <p class="topic-description">Sharpen your reasoning skills with logic puzzles and critical thinking</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script>
+        function selectTopic(topic) {
+            // Store selected topic in sessionStorage
+            sessionStorage.setItem('selectedTopic', topic);
+            // Navigate to difficulty page
+            window.location.href = 'difficulty.html';
+        }
+
+        function navigateToHome() {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
